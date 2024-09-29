@@ -20,6 +20,7 @@ public class DietController {
          * 根据用户的早餐推荐 获取早餐推荐
          */
         String breakfast = dietService.getBreakfast(userId);
+        //fanhui
         return breakfast;
     }
 
