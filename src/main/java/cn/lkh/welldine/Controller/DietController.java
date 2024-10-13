@@ -15,16 +15,18 @@ public class DietController {
 
     @RequestMapping("/frontPage/getBreakfastRecommendation")
     @ResponseBody
+    /*
+        根据用户的早餐推荐 获取早餐推荐
+     */
     public String getBreakfast(int userId) {
-        /**
-         * 根据用户的早餐推荐 获取早餐推荐
-         */
         String breakfast = dietService.getBreakfast(userId);
-        //fanhui
         return breakfast;
     }
     @RequestMapping("/hello")
     @ResponseBody
+    /*
+        测试方法
+     */
     public String hello(){
         return "hello!!";
     }
