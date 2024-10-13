@@ -23,5 +23,10 @@ public class DietController {
         //fanhui
         return breakfast;
     }
+    @RequestMapping("/hello")
+    @ResponseBody
+    public String hello(){
+        return "hello";
+    }
 
 }
