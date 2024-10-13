@@ -1,18 +1,25 @@
 package cn.lkh.welldine.Service.impl;
 
 import cn.lkh.welldine.Service.DietService;
+import cn.lkh.welldine.dao.DietArchivesDao;
 import cn.lkh.welldine.dao.HealthRecordDao;
+import cn.lkh.welldine.dao.UserDao;
+import cn.lkh.welldine.model.DietArchives;
 import cn.lkh.welldine.model.HealthRecord;
+import cn.lkh.welldine.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class DietServiceImpl implements DietService {
     @Autowired
-    private HealthRecordDao healthRecordDao;
+    private  HealthRecordDao healthRecordDao;
+    @Autowired
+    private UserDao userDao;
+    @Autowired
+    private DietArchivesDao dietDao;
 
-    @Override
-    /**
+    /*
      *
      * 为UserId推荐早餐
      *
@@ -23,9 +30,18 @@ public class DietServiceImpl implements DietService {
      * 3. 获取用户的饮食档案
      * 4. 输出推荐的早餐
      */
+    @Override
     public String getBreakfast(int userId) {
         HealthRecord record = healthRecordDao.getHealthRecordByUserId(userId);
+        if (record == null) {
+            return "";
+        }
+        User user = userDao.getUserById(userId);
+        DietArchives dietArchives = dietDao.getDietArchivesByUserId(userId);
+        String userHealthInfo = user.getUserHealthInfo();
+        // 输出 username:[record.getHealthRecord()]
+        String healthRecord = "健康档案:[" + record.getHealthRecord() + "]";
 
-        return record.toString();
+        return userHealthInfo + ";" + healthRecord;
     }
 }

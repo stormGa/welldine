@@ -1,5 +1,7 @@
 package cn.lkh.welldine.model;
 
+import lombok.Data;
+
 import java.util.List;
 
 /**
@@ -15,6 +17,7 @@ import java.util.List;
  * 需求
  * 记录日期（可以是默认的当前日期）
  */
+@Data
 public class HealthRecord {
     private int healthInfoID;
     private int userId;
@@ -36,81 +39,9 @@ public class HealthRecord {
         this.demand = demand;
     }
 
-    @Override
-    public String toString() {
-        return "HealthRecord{" +
-                "healthInfoID=" + healthInfoID +
-                ", userId=" + userId +
-                ", height=" + height +
-                ", weight=" + weight +
-                ", gender=" + gender +
-                ", glu=" + glu +
-                ", symptoms='" + symptoms + '\'' +
-                ", demand='" + demand + '\'' +
-                '}';
+    public String getHealthRecord() {
+        return "身高：" + height + " 体重：" + weight + " 血糖值：" + glu +
+                " 症状：" + symptoms + " 需求：" + demand;
     }
 
-    public int getHealthInfoID() {
-        return healthInfoID;
-    }
-
-    public void setHealthInfoID(int healthInfoID) {
-        this.healthInfoID = healthInfoID;
-    }
-
-    public int getUserId() {
-        return userId;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
-
-    public double getHeight() {
-        return height;
-    }
-
-    public void setHeight(double height) {
-        this.height = height;
-    }
-
-    public double getWeight() {
-        return weight;
-    }
-
-    public void setWeight(double weight) {
-        this.weight = weight;
-    }
-
-    public boolean isGender() {
-        return gender;
-    }
-
-    public void setGender(boolean gender) {
-        this.gender = gender;
-    }
-
-    public double getGlu() {
-        return glu;
-    }
-
-    public void setGlu(double glu) {
-        this.glu = glu;
-    }
-
-    public String getSymptoms() {
-        return symptoms;
-    }
-
-    public void setSymptoms(String symptoms) {
-        this.symptoms = symptoms;
-    }
-
-    public String getDemand() {
-        return demand;
-    }
-
-    public void setDemand(String demand) {
-        this.demand = demand;
-    }
 }
